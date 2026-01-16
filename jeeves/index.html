@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   <title>Ask Jeeves</title>
+   <style>
+      .page {
+         background-color: #5B9BD5;
+         color: white;
+         padding: 2em;
+         margin: 2em;
+         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      body {
+         padding: 1em;
+      }
+   </style>
+</head>
+<body>
+   <p>
+      Here is a sample application that accepts user input (press ENTER after your input).
+      Attempt to inject some HTML, and then try some script injection.
+   </p>
+   <div class="page">
+      <h1>Ask Jeeves <span style="font-size: small;">(don't waste your time asking Wooster)</span></h1>
+      <h3>Your definitive source of knowledge</h3>
+
+      <div style="display: flex;">
+         <label for="question" style="padding-right: 12px;">Ask here:</label>
+         <input id="question" name="question" type="text" style="flex: 1;" />
+      </div>
+
+      <p>You asked: <span id="asked"></span></p>
+      <p>Jeeves says the answer is <span id="ans"></span></p>
+
+      <footer>
+         <hr style="width: 30%; margin-right: 0px;" />
+         <p style="font-size: small; text-align: right;">
+            Powered by MVC
+         </p>
+      </footer>
+      <script>
+         document.addEventListener("keydown", (ev) => {
+            if (ev.key === 'Enter') {
+               const q = document.getElementById("question").value;
+               document.getElementById("asked").innerHTML = q;
+               document.getElementById("ans").innerText = 42;
+            }
+         });
+      </script>
+   </div>
+</body>
+</html>
