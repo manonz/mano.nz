@@ -45,7 +45,32 @@
             if (ev.key === 'Enter') {
                const q = document.getElementById("question").value;
                document.getElementById("asked").innerHTML = q;
-               document.getElementById("ans").innerText = 42;
+               const answers = [
+                  42,
+                  "42 (obviously)",
+                  "The answer is 42. You asked the wrong question.",
+                  "I took the liberty of computing it. The answer is 42.",
+                  "42. As expected.",
+                  "I took the liberty of computing it. The answer is 42.",
+                  "One might reasonably conclude the answer is 42.",
+                  "42. Shall I prepare tea?",
+                  "42. The difficulty lies in the question, not the answer.",
+                  "42. Context, as always, is everything.",
+                  "The answer is 42. Interpretation is left as an exercise.",
+                  "42... though I suspect we are asking the wrong thing.",
+                  "42. Bold of you to ask.",
+                  "42. I trust this resolves everything.",
+                  "42, I reckon",
+                  "42. I shall await your follow-up confusion.",
+                  "42. As it has always been.",
+                  "42, sir. A triumph of modern reasoning.",
+                  "42. One hesitates to imagine the alternatives.",
+                  "42. The dolphins were right.",
+                  "42. Earth will be demolished shortly."
+               ];
+
+               document.getElementById("ans").innerText =
+                  answers[Math.floor(Math.random() * answers.length)];
             }
          });
       </script>
