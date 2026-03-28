@@ -160,15 +160,34 @@
          top.style.opacity = '1';
       }
 
-      // Left click = open
+      const Actions = {
+         OPEN: 'open',
+         CLOSE: 'close',
+      };
+
+      function handleAction(action) {
+         switch (action) {
+            case Actions.OPEN:
+               openNext();
+               break;
+            case Actions.CLOSE:
+               closeLast();
+               break;
+         }
+      }
+
       container.addEventListener('click', () => {
-         openNext();
+         handleAction(Actions.OPEN);
       });
 
-      // Right click = close
       container.addEventListener('contextmenu', (e) => {
          e.preventDefault();
-         closeLast();
+         handleAction(Actions.CLOSE);
+      });
+
+      window.addEventListener('keydown', (e) => {
+         if (e.key === 'ArrowUp') handleAction(Actions.OPEN);
+         if (e.key === 'ArrowDown') handleAction(Actions.CLOSE);
       });
 
       build();
