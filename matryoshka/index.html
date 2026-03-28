@@ -186,6 +186,7 @@
       });
 
       window.addEventListener('keydown', (e) => {
+         e.preventDefault();
          if (e.key === 'ArrowUp') handleAction(Actions.OPEN);
          if (e.key === 'ArrowDown') handleAction(Actions.CLOSE);
       });
