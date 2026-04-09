@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
    <style>
       body {
          display: flex;
+         flex-direction: column;
          justify-content: center;
          align-items: center;
          height: 100vh;
@@ -43,6 +45,9 @@
 <body>
 
    <div id="container"></div>
+   <p style="font-size: smaller; text-align: center; margin-top: 12px;">
+      Left-click or press ↑ to unnest; right-click or press ↓ to re-nest.
+   </p>
 
    <script>
       const MAX_LEVELS = 6;
