@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +19,6 @@
          position: relative;
          width: 300px;
          height: 600px;
-         cursor: pointer;
       }
 
       .layer {
@@ -47,7 +45,12 @@
 
    <div id="container"></div>
    <p style="font-size: smaller; text-align: center; margin-top: 12px;">
-      Left-click or press ↑ to unnest; right-click or press ↓ to re-nest.
+      Press <span id="up1" style="cursor: pointer;">▲</span> to unnest; press <span id="down1" style="cursor: pointer;">▼</span> to re-nest.
+   </p>
+   <p style="text-align: center; margin-top: 12px;">
+      <span id="up2" style="cursor: pointer;">▲</span>
+      <br />
+      <span id="down2" style="cursor: pointer;">▼</span>
    </p>
 
    <script>
@@ -177,16 +180,25 @@
          }
       }
 
-      container.addEventListener('click', () => {
+      document.getElementById('up1').addEventListener('click', () => {
          handleAction(Actions.OPEN);
       });
 
-      container.addEventListener('contextmenu', (e) => {
+      document.getElementById('down1').addEventListener('click', (e) => {
          e.preventDefault();
          handleAction(Actions.CLOSE);
       });
 
-      window.addEventListener('keydown', (e) => {
+      document.getElementById('up2').addEventListener('click', () => {
+         handleAction(Actions.OPEN);
+      });
+
+      document.getElementById('down2').addEventListener('click', (e) => {
+         e.preventDefault();
+         handleAction(Actions.CLOSE);
+      });
+
+     window.addEventListener('keydown', (e) => {
          e.preventDefault();
          if (e.key === 'ArrowUp') handleAction(Actions.OPEN);
          if (e.key === 'ArrowDown') handleAction(Actions.CLOSE);
