@@ -39,18 +39,35 @@
          transform-origin: bottom center;
          transition: transform 0.4s ease, opacity 0.4s ease;
       }
+
+      button {
+         cursor: pointer;
+         font-size: 1em;
+         padding: 4px 8px;
+      }
+
+         button.big {
+            font-size: 2em;
+            padding: 8px 16px;
+            margin: 4px 0;
+         }
+
+         button:active {
+            transform: scale(0.95);
+         }
    </style>
 </head>
 <body>
 
    <div id="container"></div>
    <p style="font-size: smaller; text-align: center; margin-top: 12px;">
-      Press <span id="up1" style="cursor: pointer;">▲</span> to unnest; press <span id="down1" style="cursor: pointer;">▼</span> to re-nest.
+      Press <button id="up1">▲</button> to unnest;
+      press <button id="down1">▼</button> to re-nest.
    </p>
+
    <p style="text-align: center; margin-top: 12px;">
-      <span id="up2" style="cursor: pointer;">▲</span>
-      <br />
-      <span id="down2" style="cursor: pointer;">▼</span>
+      <button id="up2" class="big">▲</button><br />
+      <button id="down2" class="big">▼</button>
    </p>
 
    <script>
@@ -142,26 +159,46 @@
          bottomWrap.appendChild(bottomSVG);
 
          container.appendChild(bottomWrap);
+         setLevel(0);
+      }
+
+      function setLevel(newLevel) {
+         newLevel = Math.max(0, Math.min(MAX_LEVELS, newLevel));
+
+         if (newLevel === currentLevel) {
+            updateButtons();
+            return;
+         }
+
+         const oldLevel = currentLevel;
+         currentLevel = newLevel;
+
+         // Apply only the delta
+         if (newLevel > oldLevel) {
+            // Opening
+            for (let i = oldLevel; i < newLevel; i++) {
+               const top = tops[i];
+               top.style.transform = top.dataset.baseTransform + ' translateY(-120%)';
+               top.style.opacity = '0';
+            }
+         } else {
+            // Closing
+            for (let i = newLevel; i < oldLevel; i++) {
+               const top = tops[i];
+               top.style.transform = top.dataset.baseTransform;
+               top.style.opacity = '1';
+            }
+         }
+
+         updateButtons();
       }
 
       function openNext() {
-         if (currentLevel >= MAX_LEVELS) return;
-
-         const top = tops[currentLevel];
-         top.style.transform += ' translateY(-120%)';
-         top.style.opacity = '0';
-
-         currentLevel++;
+         setLevel(currentLevel + 1);
       }
 
       function closeLast() {
-         if (currentLevel <= 0) return;
-
-         currentLevel--;
-
-         const top = tops[currentLevel];
-         top.style.transform = top.style.transform.replace(' translateY(-120%)', '');
-         top.style.opacity = '1';
+         setLevel(currentLevel - 1);
       }
 
       const Actions = {
@@ -180,26 +217,30 @@
          }
       }
 
-      document.getElementById('up1').addEventListener('click', () => {
-         handleAction(Actions.OPEN);
-      });
+      function bindAction(id, action) {
+         document.getElementById(id).addEventListener('click', (e) => {
+            e.preventDefault();
+            handleAction(action);
+         });
+      }
 
-      document.getElementById('down1').addEventListener('click', (e) => {
-         e.preventDefault();
-         handleAction(Actions.CLOSE);
-      });
+      function updateButtons() {
+         document.getElementById('up1').disabled = currentLevel >= MAX_LEVELS;
+         document.getElementById('up2').disabled = currentLevel >= MAX_LEVELS;
+         document.getElementById('down1').disabled = currentLevel <= 0;
+         document.getElementById('down2').disabled = currentLevel <= 0;
+      }
 
-      document.getElementById('up2').addEventListener('click', () => {
-         handleAction(Actions.OPEN);
-      });
+      bindAction('up1', Actions.OPEN);
+      bindAction('up2', Actions.OPEN);
+      bindAction('down1', Actions.CLOSE);
+      bindAction('down2', Actions.CLOSE);
 
-      document.getElementById('down2').addEventListener('click', (e) => {
-         e.preventDefault();
-         handleAction(Actions.CLOSE);
-      });
+      window.addEventListener('keydown', (e) => {
+         if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            e.preventDefault();
+         }
 
-     window.addEventListener('keydown', (e) => {
-         e.preventDefault();
          if (e.key === 'ArrowUp') handleAction(Actions.OPEN);
          if (e.key === 'ArrowDown') handleAction(Actions.CLOSE);
       });
