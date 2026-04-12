@@ -198,15 +198,15 @@
          const rect = container.getBoundingClientRect();
          const y = e.clientY - rect.top;
 
-         const split = rect.height * 0.65; // adjust boundary here
+         const split = rect.height * 0.65;
 
          if (y < split) {
-            // TOP region → unnest
+            // Click in top region unnests
             if (currentLevel < MAX_LEVELS) {
                openNext();
             }
          } else {
-            // BOTTOM region → re-nest
+            // Click in bottom region re-nests
             if (currentLevel > 0) {
                closeLast();
             }
