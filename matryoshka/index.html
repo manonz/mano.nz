@@ -175,23 +175,6 @@
          setLevel(currentLevel - 1);
       }
 
-      const Actions = {
-         OPEN: 'open',
-         CLOSE: 'close',
-      };
-
-      function handleAction(action) {
-         switch (action) {
-            case Actions.OPEN:
-               openNext();
-               break;
-            case Actions.CLOSE:
-               closeLast();
-               break;
-         }
-      }
-
-
       build();
 
       container.addEventListener('click', (e) => {
