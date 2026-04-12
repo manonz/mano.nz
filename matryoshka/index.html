@@ -62,15 +62,6 @@
 <body>
 
    <div id="container"></div>
-   <p style="font-size: smaller; text-align: center; margin-top: 12px; display: none; ">
-      Press <button id="up1">▲</button> to unnest;
-      press <button id="down1">▼</button> to re-nest.
-   </p>
-
-   <p style="text-align: center; margin-top: 12px; display: none;">
-      <button id="up2" class="big">▲</button><br />
-      <button id="down2" class="big">▼</button>
-   </p>
 
    <script>
       const MAX_LEVELS = 6;
@@ -168,7 +159,6 @@
          newLevel = Math.max(0, Math.min(MAX_LEVELS, newLevel));
 
          if (newLevel === currentLevel) {
-            updateButtons();
             return;
          }
 
@@ -191,8 +181,6 @@
                top.style.opacity = '1';
             }
          }
-
-         updateButtons();
       }
 
       function openNext() {
@@ -219,33 +207,6 @@
          }
       }
 
-      function bindAction(id, action) {
-         document.getElementById(id).addEventListener('click', (e) => {
-            e.preventDefault();
-            handleAction(action);
-         });
-      }
-
-      function updateButtons() {
-         document.getElementById('up1').disabled = currentLevel >= MAX_LEVELS;
-         document.getElementById('up2').disabled = currentLevel >= MAX_LEVELS;
-         document.getElementById('down1').disabled = currentLevel <= 0;
-         document.getElementById('down2').disabled = currentLevel <= 0;
-      }
-
-      bindAction('up1', Actions.OPEN);
-      bindAction('up2', Actions.OPEN);
-      bindAction('down1', Actions.CLOSE);
-      bindAction('down2', Actions.CLOSE);
-
-      window.addEventListener('keydown', (e) => {
-         if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-            e.preventDefault();
-         }
-
-         if (e.key === 'ArrowUp') handleAction(Actions.OPEN);
-         if (e.key === 'ArrowDown') handleAction(Actions.CLOSE);
-      });
 
       build();
 
