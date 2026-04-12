@@ -28,6 +28,7 @@
          display: flex;
          justify-content: center;
          align-items: center;
+         pointer-events: none;
       }
 
       svg {
@@ -61,7 +62,7 @@
 <body>
 
    <div id="container"></div>
-   <p style="font-size: smaller; text-align: center; margin-top: 12px;">
+   <p style="font-size: smaller; text-align: center; margin-top: 12px; display: none; ">
       Press <button id="up1">▲</button> to unnest;
       press <button id="down1">▼</button> to re-nest.
    </p>
@@ -247,6 +248,25 @@
       });
 
       build();
+
+      container.addEventListener('click', (e) => {
+         const rect = container.getBoundingClientRect();
+         const y = e.clientY - rect.top;
+
+         const split = rect.height * 0.65; // adjust boundary here
+
+         if (y < split) {
+            // TOP region → unnest
+            if (currentLevel < MAX_LEVELS) {
+               openNext();
+            }
+         } else {
+            // BOTTOM region → re-nest
+            if (currentLevel > 0) {
+               closeLast();
+            }
+         }
+      });
    </script>
 
 </body>
