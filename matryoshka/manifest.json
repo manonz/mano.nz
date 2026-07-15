@@ -1,0 +1,16 @@
+{
+  "name": "Матрёшка",
+  "short_name": "Матрёшка",
+  "start_url": "index.html",
+  "scope": "/matryoshka/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "MatryoshkaX2.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
