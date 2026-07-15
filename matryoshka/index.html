@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>матрёшка</title>
+   <link rel="manifest" href="manifest.json" />
    <link rel="icon" type="image/svg+xml" href="MatryoshkaX2.svg" />
    <style>
       body {
@@ -48,6 +50,12 @@
    <div id="container"></div>
 
    <script>
+      if ('serviceWorker' in navigator) {
+         window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js');
+         });
+      }
+
       const MAX_LEVELS = 6;
       const SCALE_STEP = 0.1;
 
