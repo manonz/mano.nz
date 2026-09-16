@@ -161,13 +161,7 @@
          <use href="#carriage" x="-1302" />
          <use href="#carriage" x="-1370" />
 
-         <animateTransform attributeName="transform"
-                           type="translate"
-                           from="45 0"
-                           to="2543 0"
-                           dur="40s"
-                           begin="0s"
-                           fill="freeze" />
+         <animateTransform id="trainAnimation" attributeName="transform" type="translate" from="45 0" to="2543 0" dur="40s" begin="0s" fill="freeze" />
       </g>
 
    </svg>
@@ -192,7 +186,8 @@
       let elapsed = 0;
       let timerId = null;
 
-      const duration = 40; // seconds
+      const animation = document.getElementById("trainAnimation");
+      const duration = parseFloat(animation.getAttribute("dur"));
 
       // Start paused.
       svg.pauseAnimations();
