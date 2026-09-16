@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 400">
+
+   <defs>
+
+      <!-- =====================================================
+           ENGINE
+           ===================================================== -->
+      <g id="engine">
+         <!-- main body -->
+         <rect x="0" y="215" width="100" height="55" rx="8" fill="#d94b4b" stroke="#172033" stroke-width="3"/>
+
+         <!-- cab -->
+         <rect x="18" y="170" width="55" height="50" rx="5" fill="#d94b4b" stroke="#172033" stroke-width="3"/>
+
+         <!-- cab window -->
+         <rect x="28" y="180" width="35" height="25" fill="#bde4f5" stroke="#172033" stroke-width="2"/>
+
+         <!-- boiler -->
+         <rect x="65" y="190" width="55" height="35" rx="15" fill="#d94b4b" stroke="#172033" stroke-width="3"/>
+
+         <!-- nose -->
+         <path d="M115 205 L135 215 L135 260 L115 270 Z" fill="#d94b4b" stroke="#172033" stroke-width="3"/>
+
+         <!-- chimney -->
+         <rect x="78" y="160" width="18" height="32" fill="#172033"/>
+
+         <rect x="72" y="155" width="30" height="8" rx="3" fill="#172033"/>
+
+         <!-- wheels -->
+         <circle cx="25" cy="278" r="13" fill="#172033"/>
+         <circle cx="75" cy="278" r="13" fill="#172033"/>
+         <circle cx="118" cy="278" r="13" fill="#172033"/>
+
+         <circle cx="25" cy="278" r="5" fill="#f7f9fc"/>
+         <circle cx="75" cy="278" r="5" fill="#f7f9fc"/>
+         <circle cx="118" cy="278" r="5" fill="#f7f9fc"/>
+      </g>
+
+
+      <!-- =====================================================
+           ONE CARRIAGE
+           ===================================================== -->
+      <g id="carriage">
+         <rect x="0" y="215" width="62" height="55" rx="6" fill="#4d78a8" stroke="#172033" stroke-width="3"/>
+
+         <!-- windows -->
+         <rect x="9" y="225" width="18" height="18" rx="2" fill="#c9e7f5"/>
+         <rect x="35" y="225" width="18" height="18" rx="2" fill="#c9e7f5"/>
+
+         <!-- wheels -->
+         <circle cx="15" cy="278" r="11" fill="#172033"/>
+         <circle cx="48" cy="278" r="11" fill="#172033"/>
+
+         <circle cx="15" cy="278" r="4" fill="#f7f9fc"/>
+         <circle cx="48" cy="278" r="4" fill="#f7f9fc"/>
+      </g>
+
+   </defs>
+
+
+   <!-- =====================================================
+        BACKGROUND
+        ===================================================== -->
+
+   <rect width="1400" height="400" fill="#f7f9fc"/>
+
+
+   <!-- =====================================================
+        START POLE
+        ===================================================== -->
+
+   <line x1="180" y1="90" x2="180" y2="330" stroke="#172033" stroke-width="8"/>
+
+   <!-- Start flag -->
+   <path d="M180 90 L280 115 L180 140 Z" fill="#36a269" stroke="#172033" stroke-width="2"/>
+
+   <text x="180" y="65" text-anchor="middle" font-family="Segoe UI, Arial" font-size="22" font-weight="600"> ▶ </text>
+
+
+   <!-- =====================================================
+        END POLE
+        ===================================================== -->
+
+   <line x1="1220" y1="90" x2="1220" y2="330" stroke="#172033" stroke-width="8"/>
+
+   <!-- End flag -->
+   <path d="M1220 90 L1320 115 L1220 140 Z" fill="#e61269" stroke="#172033" stroke-width="2"/>
+
+   <text x="1220" y="65" text-anchor="middle" font-family="Segoe UI, Arial" font-size="22" font-weight="600"> ■ </text>
+
+   <!-- =====================================================
+        TRACK
+        ===================================================== -->
+
+   <line x1="120" y1="300" x2="1280" y2="300" stroke="#555" stroke-width="6"/>
+   <line x1="120" y1="325" x2="1280" y2="325" stroke="#555" stroke-width="6"/>
+
+
+   <!-- =====================================================
+        TRAIN
+        =====================================================
+
+        The engine nose starts exactly at START.
+
+        The train continues moving after the engine passes
+        END. The animation ends only when the LAST CARRIAGE
+        has passed END.
+
+        Initial position:
+           engine nose = 135 + 45 = 180
+
+        Last carriage:
+           x = -1370
+           width = 62
+           right edge = -1308
+
+        Final position:
+           END = 1220
+           desired clearance past END = 15
+
+           final translation
+             = 1220 + 15 - (-1308)
+             = 2543
+
+        Therefore the right edge of the last carriage
+        finishes at x = 1235.
+        -->
+
+   <g id="train">
+      <!-- Engine -->
+      <use href="#engine"/>
+
+      <!-- 20 carriages -->
+      <use href="#carriage" x="-78"/>
+      <use href="#carriage" x="-146"/>
+      <use href="#carriage" x="-214"/>
+      <use href="#carriage" x="-282"/>
+      <use href="#carriage" x="-350"/>
+      <use href="#carriage" x="-418"/>
+      <use href="#carriage" x="-486"/>
+      <use href="#carriage" x="-554"/>
+      <use href="#carriage" x="-622"/>
+      <use href="#carriage" x="-690"/>
+
+      <use href="#carriage" x="-758"/>
+      <use href="#carriage" x="-826"/>
+      <use href="#carriage" x="-894"/>
+      <use href="#carriage" x="-962"/>
+      <use href="#carriage" x="-1030"/>
+      <use href="#carriage" x="-1098"/>
+      <use href="#carriage" x="-1166"/>
+      <use href="#carriage" x="-1234"/>
+      <use href="#carriage" x="-1302"/>
+      <use href="#carriage" x="-1370"/>
+
+      <!-- =================================================
+           TRAIN MOTION
+
+           Initial translation = 45
+
+           Engine nose:
+               135 + 45 = 180
+               → exactly at START
+
+           Engine reaches END when:
+               1220 - 135 = 1085
+
+           But the animation CONTINUES.
+
+           The last carriage has:
+               x = -1370
+               width = 62
+               right edge = -1308
+
+           Final translation = 2543
+
+           Therefore:
+               -1308 + 2543 = 1235
+
+           The last carriage finishes 15 px beyond END.
+           ================================================= -->
+
+      <animateTransform attributeName="transform" type="translate" from="45 0" to="2543 0" dur="40s" begin="0s" fill="freeze"/>
+   </g>
+</svg>
