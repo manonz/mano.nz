@@ -1,0 +1,159 @@
+* {
+   box-sizing: border-box;
+}
+
+html,
+body {
+   margin: 0;
+   min-height: 100%;
+   font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+   background: #101827;
+   color: #172033;
+}
+
+body {
+   padding: 24px;
+}
+
+.app {
+   width: min(900px, 100%);
+   margin: auto;
+   padding: 24px;
+   background: #f7f9fc;
+   border-radius: 14px;
+}
+
+h1 {
+   margin-top: 0;
+}
+
+h2 {
+   margin: 18px 0 6px;
+   font-size: 0.85rem;
+   text-transform: uppercase;
+   letter-spacing: 0.08em;
+   color: #5d6878;
+}
+
+
+/* ---------- Controls ---------- */
+
+.controls {
+   display: grid;
+   gap: 8px;
+}
+
+input {
+   width: 100%;
+   padding: 12px;
+   border: 1px solid #bcc5d1;
+   border-radius: 6px;
+   font: inherit;
+   font-size: 1.05rem;
+}
+
+button {
+   width: max-content;
+   padding: 10px 18px;
+   border: 0;
+   border-radius: 6px;
+   font: inherit;
+   cursor: pointer;
+}
+
+   button:disabled {
+      opacity: 0.45;
+      cursor: default;
+   }
+
+#play {
+   background: #183c62;
+   color: white;
+}
+
+#stop {
+   background: #dfe4ea;
+}
+
+
+/* ---------- Scrolling displays ---------- */
+
+.display {
+   height: 54px;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   border: 1px solid #c8d0db;
+   border-radius: 6px;
+   background: white;
+}
+
+   .display span {
+      white-space: pre;
+      padding: 0 18px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 1.2rem;
+   }
+
+.morse-window span {
+   font-size: 1rem;
+   letter-spacing: 0.1em;
+}
+
+
+/* ---------- SVG ---------- */
+
+#signal {
+   display: block;
+   width: 100%;
+   height: auto;
+   border: 1px solid #c8d0db;
+   border-radius: 6px;
+   background: white;
+}
+
+
+/* ---------- Status ---------- */
+
+#status {
+   margin-top: 10px;
+   color: #5d6878;
+   font-size: 0.9rem;
+}
+
+
+/* ---------- Character tracking ---------- */
+
+.tracking-window {
+   justify-content: flex-start;
+}
+
+.tracking-content {
+   display: flex;
+   align-items: center;
+   white-space: nowrap;
+   padding: 0;
+   transition: transform 80ms linear;
+}
+
+.tracked-character {
+   display: inline-block;
+   padding: 4px 2px;
+   border-radius: 4px;
+}
+
+   .tracked-character.active {
+      background: #ffd84d;
+      color: #101827;
+   }
+
+.morse-character {
+   display: inline-block;
+   padding: 4px 5px;
+   border-radius: 4px;
+}
+
+   .morse-character.active {
+      background: #ffd84d;
+      color: #101827;
+   }

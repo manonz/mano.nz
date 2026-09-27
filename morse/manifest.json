@@ -1,0 +1,17 @@
+{
+  "name": "Morse Signal",
+  "short_name": "Morse",
+  "description": "A visual and audio Morse code trainer.",
+  "start_url": "index.html",
+  "scope": "/morse/",
+  "display": "standalone",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

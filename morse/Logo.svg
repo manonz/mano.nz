@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+
+   <!-- Dash -->
+   <rect x="32" y="24" width="192" height="32" rx="16" fill="#ff0000"/>
+
+   <!-- Dots -->
+   <circle cx="80"  cy="80" r="16" fill="#ff0000"/>
+   <circle cx="128" cy="80" r="16" fill="#ff0000"/>
+   <circle cx="176" cy="80" r="16" fill="#ff0000"/>
+
+   <!-- Dash -->
+   <rect x="32" y="112" width="192" height="32" rx="16" fill="#ff0000"/>
+
+   <!-- Dots -->
+   <circle cx="80"  cy="168" r="16" fill="#ff0000"/>
+   <circle cx="128" cy="168" r="16" fill="#ff0000"/>
+   <circle cx="176" cy="168" r="16" fill="#ff0000"/>
+
+   <!-- Dash -->
+   <rect x="32" y="200" width="192" height="32" rx="16" fill="#ff0000"/>
+
+</svg>
