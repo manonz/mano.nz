@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <meta name="theme-color" content="#101827">
+   <meta name="description" content="A visual and audio Morse code trainer">
+
+   <link rel="manifest" href="manifest.json" />
+   <link rel="stylesheet" href="style.css" />
+   <link rel="icon" type="image/svg+xml" href="Logo.svg" />
+
+   <title>Morse Signal</title>
+   <script src="morse.js" defer="defer"></script>
+   <script src="app.js" defer="defer"></script>
+</head>
+
+<body>
+   <main class="app">
+      <h1>Morse Signal</h1>
+
+      <div class="controls">
+         <label for="message">Message</label>
+         <input id="message" type="text" value="THE QUICK BROWN FOX" autocomplete="off" spellcheck="false">
+
+         <button id="play">▶ Play</button>
+         <button id="stop" disabled>■ Stop</button>
+      </div>
+
+      <section>
+         <h2>Text</h2>
+
+         <div class="display text-window tracking-window">
+            <span id="text-display"></span>
+         </div>
+      </section>
+
+      <section>
+         <h2>Morse</h2>
+
+         <div class="display morse-window tracking-window">
+            <span id="morse-display"></span>
+         </div>
+      </section>
+
+      <section>
+         <h2>Signal</h2>
+
+         <svg id="signal" viewBox="0 0 760 300">
+
+            <!-- Flashlight beam -->
+            <polygon id="light-beam" points="235,105 735,45 735,165 235,135" fill="#ffd84d" opacity="0.05" />
+
+            <!-- Flashlight -->
+            <rect x="45" y="80" width="170" height="80" rx="18" fill="#303a4b" />
+            <rect x="80" y="92" width="95" height="56" rx="10" fill="#182131" />
+            <circle cx="195" cy="120" r="27" fill="#d7dce3" stroke="#7d8796" stroke-width="5" />
+            <circle id="lamp" cx="195" cy="120" r="17" fill="#fff4a3" />
+
+            <!-- Waveform window -->
+            <rect x="35" y="205" width="690" height="65" rx="6" fill="#101827" />
+            <line x1="35" y1="237.5" x2="725" y2="237.5" stroke="#43516a" stroke-width="1" />
+            <polyline id="waveform" points="" fill="none" stroke="#7ee787" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+
+            <!-- Fixed playhead -->
+            <circle id="playhead" cx="575" cy="237.5" r="5" fill="white" opacity="0" />
+         </svg>
+      </section>
+
+      <div id="status">Ready</div>
+   </main>
+</body>
+</html>
