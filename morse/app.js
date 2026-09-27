@@ -1,3 +1,9 @@
+if ('serviceWorker' in navigator) {
+   window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js');
+   });
+}
+
 const messageInput = document.getElementById("message");
 
 const playButton = document.getElementById("play");
@@ -462,21 +468,3 @@ messageInput.addEventListener("input", () => {
  */
 
 prepareMessage();
-
-/*
- * ---------------------------------------------------------
- * PWA service worker
- * ---------------------------------------------------------
- */
-
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load",
-        () => {
-            navigator.serviceWorker
-                .register("sw.js")
-                .catch(error => {
-                    console.log("Service worker registration failed:", error);
-                });
-        }
-    );
-}
