@@ -2,6 +2,7 @@ const CACHE_NAME = 'morse-cache-v1';
 
 // Paths are relative to the location of this sw.js file
 const ASSETS_TO_CACHE = [
+   '/',
    'index.html',
    'manifest.json',
    'Logo.svg',
