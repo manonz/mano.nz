@@ -1,4 +1,4 @@
-const CACHE_NAME = 'morse-cache-v1';
+const CACHE_NAME = 'tcp-cache-v1';
 
 // Paths are relative to the location of this sw.js file
 const ASSETS_TO_CACHE = [
