@@ -6,7 +6,6 @@ const ASSETS_TO_CACHE = [
    'manifest.json',
    'Logo.svg',
    'style.css',
-   'morse.js',
    'app.js',
 ];
 
