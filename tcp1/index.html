@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>TCP Sliding Window</title>
+   <link rel="stylesheet" href="style.css" />
+   <script src="app.js" defer="defer"></script>
+</head>
+<body>
+   <header>
+      <h1>TCP Sliding Window</h1>
+      <p>
+         A discrete model of sequence numbers, cumulative ACKs,
+         packet loss and retransmission.
+      </p>
+      <div class="controls">
+         <button id="stepButton">
+            Step
+         </button>
+         <button id="resetButton">
+            Reset
+         </button>
+         <span id="eventCounter">
+            Event 0
+         </span>
+      </div>
+   </header>
+   <main>
+      <section class="panel timeline-panel">
+         <h2>Event Timeline</h2>
+         <div id="timeline"></div>
+      </section>
+
+      <section class="panel">
+         <h2>Sender State</h2>
+         <div class="state-grid">
+            <div class="state-item">
+               <span class="label">Base</span>
+               <strong id="senderBase"></strong>
+            </div>
+            <div class="state-item">
+               <span class="label">Next sequence</span>
+               <strong id="senderNext"></strong>
+            </div>
+            <div class="state-item">
+               <span class="label">Window size</span>
+               <strong id="senderWindowSize"></strong>
+            </div>
+            <div class="state-item">
+               <span class="label">Timer</span>
+               <strong id="senderTimer"></strong>
+            </div>
+         </div>
+
+         <h3>Sequence space</h3>
+         <div id="senderSegments" class="segments"></div>
+      </section>
+
+      <section class="panel">
+         <h2>Receiver State</h2>
+         <div class="state-grid">
+            <div class="state-item">
+               <span class="label">Next expected</span>
+               <strong id="receiverExpected"></strong>
+            </div>
+            <div class="state-item">
+               <span class="label">Last ACK</span>
+               <strong id="receiverAck"></strong>
+            </div>
+         </div>
+
+         <h3>Received segments</h3>
+         <div id="receiverSegments" class="segments"></div>
+      </section>
+
+      <section class="note">
+         Sequence numbers identify segments here. Real TCP sequence numbers identify bytes.
+         <br /><br />
+         ACK <em>N</em> means
+         “everything before N has arrived; I am expecting N.”
+      </section>
+   </main>
+</body>
+</html>
