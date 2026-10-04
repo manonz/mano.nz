@@ -3,7 +3,7 @@
   "short_name": "TCP-101",
   "description": "TCP Sliding Window.",
   "start_url": "index.html",
-  "scope": "/tcp/",
+  "scope": "/tcp1/",
   "display": "standalone",
   "icons": [
     {
