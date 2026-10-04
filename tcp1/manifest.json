@@ -1,0 +1,15 @@
+{
+  "name": "TCP-101",
+  "short_name": "TCP-101",
+  "description": "TCP Sliding Window.",
+  "start_url": "index.html",
+  "scope": "/tcp/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "Logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
